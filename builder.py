@@ -356,6 +356,9 @@ def render_base(title, description, content_html, lang="tr", active_nav="home", 
   <link rel="alternate" type="application/rss+xml" title="{t['site_title']} RSS Feed" href="{feed_url}">
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 
+  <!-- Privacy-Friendly Invisible Analytics (Zero UI, Zero Cookies) -->
+  <script defer src="/_vercel/insights/script.js"></script>
+
   <!-- Styles -->
   <link rel="stylesheet" href="/css/style.css">
   {extra_head}
