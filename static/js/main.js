@@ -3,12 +3,13 @@
 (function () {
   // 1. Theme Management (Dark / Light)
   const root = document.documentElement;
-  const storageKey = 'gizemuzer-theme';
+  const storageKey = 'gizemuzer-theme-v2';
 
   function getPreferredTheme() {
     const saved = localStorage.getItem(storageKey);
-    if (saved) return saved;
-    return 'light'; // Her zaman aydınlık, ferah ve parlak mod varsayılan
+    // İlk açılışta kesinlikle kişinin işletim sistemi ayarlarına bakılmaz; daima sıcak bej açılır.
+    if (saved === 'dark') return 'dark';
+    return 'light';
   }
 
   function applyTheme(theme) {

@@ -1,25 +1,25 @@
 /* gizemuzer.xyz — Organic Warm Minimalist Editorial Design System */
 
 :root {
-  /* Warm Earth & Forest Palette (Warm Linen, Deep Forest Green, Terracotta & Sage) */
-  --bg: #fcfbf7;
-  --bg-card: #ffffff;
-  --bg-subtle: #f4efe6;
-  --border: #e9e3d5;
-  --border-hover: #d6ccba;
-  --text-main: #202421;
-  --text-muted: #5a6660;
-  --text-subtle: #8c9790;
-  --accent: #2b5944;
-  --accent-hover: #1e3f30;
-  --accent-subtle: #eaf2ec;
+  /* Warm Beige, Sand & Ecru Editorial Palette */
+  --bg: #f5f0e6;
+  --bg-card: #fdfbf7;
+  --bg-subtle: #eae3d2;
+  --border: #dfd7c5;
+  --border-hover: #cbbfab;
+  --text-main: #2b2420;
+  --text-muted: #665b53;
+  --text-subtle: #968a80;
+  --accent: #2c5340;
+  --accent-hover: #1e3a2c;
+  --accent-subtle: #e3ece6;
   --warm: #b86236;
   --warm-hover: #9c4f27;
-  --warm-subtle: #faefe8;
-  --code-bg: #f4efe6;
-  --tag-bg: #eaf2ec;
-  --tag-text: #2b5944;
-  --header-bg: rgba(252, 251, 247, 0.92);
+  --warm-subtle: #f8ece4;
+  --code-bg: #eae3d2;
+  --tag-bg: #eae3d2;
+  --tag-text: #2c5340;
+  --header-bg: rgba(245, 240, 230, 0.94);
   --radius: 10px;
   --radius-sm: 6px;
   --max-width: 720px;
