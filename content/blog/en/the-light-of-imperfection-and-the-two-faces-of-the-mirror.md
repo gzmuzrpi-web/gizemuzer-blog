@@ -5,7 +5,7 @@ slug: the-light-of-imperfection-and-the-two-faces-of-the-mirror
 translation: kusurun-isigi-ve-aynanin-iki-yuzu
 lang: en
 excerpt: Beams of light drifting through a window overlooking the Golden Horn, the secret doors opened by imperfection, and the flawed beauty of humankind reflected in the mirror of Shams and Rumi.
-tags: [Philosophy, Literature, Essays]
+tags: [Philosophy, Literature, Articles]
 featured: true
 draft: false
 ---

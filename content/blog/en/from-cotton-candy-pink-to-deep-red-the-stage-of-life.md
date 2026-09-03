@@ -5,7 +5,7 @@ slug: from-cotton-candy-pink-to-deep-red-the-stage-of-life
 translation: pembelikten-kirmiziya-yasam-sahnesi
 lang: en
 excerpt: The cotton candy pink of childhood innocence, the fierce languages of red, the authenticity of an actor on stage, and the journey of a sapling holding steadfast to its roots.
-tags: [Personal, Art, Life, Essays, Growth]
+tags: [Personal, Art, Life, Articles, Growth]
 featured: true
 draft: false
 ---

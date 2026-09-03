@@ -5,7 +5,7 @@ slug: passing-through-my-own-threshold-a-laboratory-of-life
 translation: kendi-kapimdan-gecerken-yasam-laboratuvari
 lang: en
 excerpt: The ebbs and flows of the past five years, heartfelt gratitude to my family and closest friends who never gave up on me, and embracing life as an endless laboratory of discovery.
-tags: [Personal, Journey, Essays, Gratitude]
+tags: [Personal, Journey, Articles, Gratitude]
 featured: true
 draft: false
 ---

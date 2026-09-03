@@ -19,7 +19,7 @@ In a world reshaped with dizzying speed by technology, I am fascinated by themes
 In an increasingly noisy digital landscape, I wanted to cultivate a quiet sanctuary where thoughts can gently steep without being rushed by algorithms.
 
 Here you will find:
-- **Personal Essays & Philosophy:** Inquiries into authentic living, intentional slowing down, and inner growth,
+- **Personal Articles & Philosophy:** Inquiries into authentic living, intentional slowing down, and inner growth,
 - **Literature & Observations:** Reflections drawn from books, art, and life’s delicate nuances,
 - **Technology & Human Thought:** The evolving relationship between human intuition and modern systems.
 
