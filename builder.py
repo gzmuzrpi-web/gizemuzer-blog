@@ -483,12 +483,13 @@ def build_site():
                 nav_links_html += f'<a href="{prefix}/blog/{next_p["slug"]}/" style="color: var(--text-muted); text-decoration: none;">{html.escape(next_p["title"])} →</a>'
             nav_links_html += '</div>'
 
-            # Translation notice
+            # Translation notice & safe switch_url
             trans_slug = p.get("translation", "")
             trans_html = ""
             switch_url = None
-            if trans_slug:
-                if lang == "tr":
+
+            if lang == "tr":
+                if trans_slug and trans_slug in en_by_slug:
                     switch_url = f"/en/blog/{trans_slug}/"
                     trans_html = f"""
                     <div class="translation-notice">
@@ -497,6 +498,9 @@ def build_site():
                     </div>
                     """
                 else:
+                    switch_url = "/en/blog/"
+            else:
+                if trans_slug and trans_slug in tr_by_slug:
                     switch_url = f"/blog/{trans_slug}/"
                     trans_html = f"""
                     <div class="translation-notice">
@@ -504,6 +508,8 @@ def build_site():
                       <a href="{switch_url}">{t['switch_action']}</a>
                     </div>
                     """
+                else:
+                    switch_url = "/blog/"
 
             article_html = f"""
             <article class="container">
