@@ -30,8 +30,4 @@ Geleneksel bloglar genellikle ters kronolojik sıralamayla "en yeni olan en öne
 
 Bu sitede bir yazıyı okurken bazen haftalar sonra geri dönüp güncellendiğini görebilirsiniz. Çünkü fikirler de insanlar gibi değişir ve gelişir.
 
-## Bir Yapay Zeka Ortaklığı
-
-Bu blogun teknik altyapısını kurarken özellikle yapay zeka ile kusursuz bir uyum yakalamayı hedefledim. Fikirlerimi taslak haline getirmekten yayınlamaya kadar tüm süreci Antigravity ile birlikte yürütüyorum. Böylece teknik karmaşalarla boğuşmak yerine tamamen üretmeye ve düşünmeye odaklanabiliyorum.
-
 Bana bu yolculukta eşlik ettiğiniz için teşekkür ederim. Bir kahve alın ve yazılar arasında gezintiye çıkın!
