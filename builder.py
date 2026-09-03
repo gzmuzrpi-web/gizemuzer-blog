@@ -11,7 +11,7 @@ import html
 from datetime import datetime
 from pathlib import Path
 
-SITE_URL = "https://gizemuzer.com"
+SITE_URL = "https://gizemuzer.xyz"
 SITE_TITLE = "Gizem Uzer"
 SITE_TAGLINE = "Düşünceler, yazılar ve dijital bahçe"
 SITE_DESCRIPTION = "Gizem Uzer'in teknoloji, yapay zeka, sade yaşam ve yaratıcı üretim üzerine kişisel notları ve denemeleri."

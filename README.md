@@ -1,4 +1,4 @@
-# 🌿 gizemuzer.com — Kişisel Blog & Dijital Bahçe
+# 🌿 gizemuzer.xyz — Kişisel Blog & Dijital Bahçe
 
 Gizem Uzer için özel olarak tasarlanmış; modern, editoryal tipografiye sahip, sıfır bağımlılıkla çalışan ve **tamamen yapay zeka (Antigravity) aracılığıyla yönetilebilen** kişisel düşünce alanı.
 
@@ -29,27 +29,16 @@ Ben yazıyı hazırlar, `content/blog/` altına ekler ve yerel önizlemede incel
 
 ---
 
-## 🌐 gizemuzer.com Alan Adı Satın Alma ve Bağlama Rehberi
+## 🌐 gizemuzer.xyz Alan Adını Bağlama Rehberi
 
-Kişisel gizlilik ve güvenliğiniz için alan adını doğrudan sizin adınıza kayıtlı bir sağlayıcıdan almanız önerilir.
-
-### Adım 1: Alan Adını Satın Alın
-1. **Cloudflare Registrar (En Çok Tavsiye Edilen):**
-   - [cloudflare.com/products/registrar](https://www.cloudflare.com/products/registrar/) adresine gidin.
-   - `gizemuzer.com` alan adını aratın.
-   - Cloudflare toptan fiyatına (~$10/yıl) satar, gizlilik koruması ücretsizdir ve DNS/SSL yönetimi tek paneldedir.
-2. **Alternatif: Namecheap veya Porkbun:**
-   - [namecheap.com](https://www.namecheap.com) veya [porkbun.com](https://porkbun.com) üzerinden de kolaylıkla satın alabilirsiniz.
-
-### Adım 2: Hosting Platformuna Bağlama
-Blog tamamen statik HTML/CSS olarak derlendiği için **Vercel**, **Cloudflare Pages** veya **GitHub Pages** üzerinde ömür boyu ücretsiz ve ultra-hızlı barındırılabilir.
-
-**Vercel ile Bağlama (En Pratik Yol):**
-1. [vercel.com](https://vercel.com) üzerinde ücretsiz hesap açın ve GitHub reponuzu bağlayın.
+### Vercel ile Canlıya Alma (Önerilen & En Hızlı Yol):
+1. [vercel.com](https://vercel.com) üzerinde ücretsiz bir hesap açın ve GitHub reponuzu bağlayın.
 2. Proje ayarlarından **Domains** sekmesine gidin.
-3. `gizemuzer.com` ve `www.gizemuzer.com` adreslerini ekleyin.
-4. Vercel'in size vereceği DNS kayıtlarını (A Record: `76.76.21.21` ve CNAME: `cname.vercel-dns.com`) domain aldığınız firmanın DNS paneline ekleyin.
-5. 5-10 dakika içinde SSL sertifikanız otomatik tanımlanacak ve siteniz yayına girecektir.
+3. `gizemuzer.xyz` ve `www.gizemuzer.xyz` adreslerini ekleyin.
+4. Namecheap DNS paneline şu iki kaydı girin:
+   - **Type A:** `76.76.21.21` (Host: `@`)
+   - **Type CNAME:** `cname.vercel-dns.com` (Host: `www`)
+5. 5-10 dakika içinde SSL sertifikanız otomatik tanımlanacak ve siteniz dünya çapında yayına girecektir.
 
 ---
 
