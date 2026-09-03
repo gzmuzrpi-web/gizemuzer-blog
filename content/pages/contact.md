@@ -8,9 +8,8 @@ Düşünceleriniz, geri bildirimleriniz veya ortak çalışma önerileriniz içi
 
 ## Kanallar
 
-- **E-posta:** [iletisim@gizemuzer.com](mailto:iletisim@gizemuzer.com)
-- **LinkedIn:** [linkedin.com/in/gizemuzer](https://linkedin.com)
-- **X (Twitter):** [@gizemuzer](https://x.com)
-- **GitHub:** [github.com/gizemuzer](https://github.com)
+- **E-posta:** [gzmuzr@gizemuzer.xyz](mailto:gzmuzr@gizemuzer.xyz)
+- **Instagram:** [@gzmuzrpi](https://instagram.com/gzmuzrpi)
+- **GitHub:** [github.com/gzmuzrpi-web](https://github.com/gzmuzrpi-web)
 
-Ayrıca yazılarımdan anında haberdar olmak isterseniz aşağıdaki bültene kayıt olabilir veya sitenin [RSS akışını](/feed.xml) takip edebilirsiniz.
+Yazılarımdan anında haberdar olmak isterseniz sitenin [RSS akışını](/feed.xml) da takip edebilirsiniz.

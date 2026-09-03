@@ -281,11 +281,10 @@ def render_base(title, description, content_html, active_nav="home", canonical_p
     <div class="container footer-content">
       <p>&copy; {datetime.now().year} {SITE_TITLE}. Tüm hakları saklıdır.</p>
       <div class="footer-links">
-        <a href="/feed.xml">RSS Akışı</a>
-        <a href="/hakkimda/">Hakkımda</a>
-        <a href="/iletisim/">İletişim</a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://x.com" target="_blank" rel="noopener">X / Twitter</a>
+        <a href="mailto:gzmuzr@gizemuzer.xyz">E-posta</a>
+        <a href="https://instagram.com/gzmuzrpi" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://github.com/gzmuzrpi-web" target="_blank" rel="noopener">GitHub</a>
+        <a href="/feed.xml">RSS</a>
       </div>
     </div>
   </footer>
