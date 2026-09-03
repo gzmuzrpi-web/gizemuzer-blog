@@ -416,9 +416,14 @@ def load_posts_from_dir(directory, lang="tr"):
         if meta.get("draft", False):
             continue
 
+        date_str = str(meta.get("date", "2026-09-01"))
+        today_str = datetime.now().strftime("%Y-%m-%d")
+        if date_str > today_str:
+            # İleride bir tarihe zamanlanmış yazı, günü gelince otomatik yayına girer
+            continue
+
         slug = meta.get("slug", md_file.stem)
         title = meta.get("title", slug.replace("-", " ").title())
-        date_str = str(meta.get("date", "2026-09-01"))
         excerpt = meta.get("excerpt", "")
         tags = meta.get("tags", [])
         featured = meta.get("featured", False)
