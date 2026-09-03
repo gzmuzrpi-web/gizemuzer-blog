@@ -8,7 +8,7 @@
   function getPreferredTheme() {
     const saved = localStorage.getItem(storageKey);
     if (saved) return saved;
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    return 'light'; // Her zaman aydınlık, ferah ve parlak mod varsayılan
   }
 
   function applyTheme(theme) {

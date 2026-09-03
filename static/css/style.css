@@ -1,24 +1,24 @@
 /* gizemuzer.xyz — Ultra-Minimalist & Quiet Editorial Design System */
 
 :root {
-  --bg: #faf9f6;
-  --bg-card: transparent;
-  --bg-subtle: #f2efe9;
-  --border: #eae6df;
-  --border-hover: #d3cdc4;
-  --text-main: #1a1a1c;
-  --text-muted: #6e6d73;
-  --text-subtle: #9c9a9e;
-  --accent: #1a1a1c;
-  --accent-hover: #4a4a4e;
-  --accent-subtle: #eeece6;
-  --code-bg: #f2efe9;
-  --tag-bg: #eeece6;
-  --tag-text: #525055;
-  --header-bg: rgba(250, 249, 246, 0.9);
+  --bg: #ffffff;
+  --bg-card: #ffffff;
+  --bg-subtle: #f8fafc;
+  --border: #f1f5f9;
+  --border-hover: #e2e8f0;
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-subtle: #94a3b8;
+  --accent: #0f172a;
+  --accent-hover: #334155;
+  --accent-subtle: #f8fafc;
+  --code-bg: #f8fafc;
+  --tag-bg: #f1f5f9;
+  --tag-text: #334155;
+  --header-bg: rgba(255, 255, 255, 0.95);
   --radius: 8px;
   --radius-sm: 4px;
-  --max-width: 700px;
+  --max-width: 720px;
   --font-serif: "Newsreader", "Charter", "Iowan Old Style", "Georgia", "Cambria", serif;
   --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
