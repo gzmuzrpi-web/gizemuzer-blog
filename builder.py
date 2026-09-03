@@ -283,7 +283,6 @@ def render_base(title, description, content_html, active_nav="home", canonical_p
       <div class="footer-links">
         <a href="mailto:gzmuzr@gizemuzer.xyz">E-posta</a>
         <a href="https://instagram.com/satirarasigzm" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://github.com/gzmuzrpi-web" target="_blank" rel="noopener">GitHub</a>
         <a href="/feed.xml">RSS</a>
       </div>
     </div>
