@@ -4,6 +4,8 @@ date: 2026-09-03
 slug: kendi-yuvani-ormek-ve-sezgiler
 excerpt: Toplumun hazır kalıpları, kuşun yuva yapma sezgisi, başkasının ayakkabısıyla yürümek ve bilgi denen şekerin kaynağı üzerine bir deneme.
 tags: [Toplum, Psikoloji, Sezgiler, Felsefe]
+translation: weaving-your-own-nest-lost-intuitions-in-the-mirror-of-others
+lang: tr
 featured: true
 draft: false
 ---

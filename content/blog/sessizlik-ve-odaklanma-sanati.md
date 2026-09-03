@@ -4,6 +4,8 @@ date: 2026-08-15
 slug: sessizlik-ve-odaklanma-sanati
 excerpt: Bildirim bombardımanı altında bölünmüş zihinlerimizi nasıl geri kazanabiliriz? Dijital sadelik ve odaklanma üzerine pratik düşünceler.
 tags: [Verimlilik, Odaklanma, Yaşam]
+translation: the-art-of-silence-and-deep-focus
+lang: tr
 featured: false
 draft: false
 ---

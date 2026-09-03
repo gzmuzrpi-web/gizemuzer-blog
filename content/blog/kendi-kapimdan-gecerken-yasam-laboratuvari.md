@@ -4,6 +4,8 @@ date: 2024-05-23
 slug: kendi-kapimdan-gecerken-yasam-laboratuvari
 excerpt: Son beş yılın iniş çıkışları, benden vazgeçmeyen aileme ve dostlarıma kalpten bir teşekkür ve yaşamı bir keşif laboratuvarı olarak kucaklamak üzerine.
 tags: [Kişisel, Yolculuk, Denemeler, Teşekkür]
+translation: passing-through-my-own-threshold-a-laboratory-of-life
+lang: tr
 featured: true
 draft: false
 ---

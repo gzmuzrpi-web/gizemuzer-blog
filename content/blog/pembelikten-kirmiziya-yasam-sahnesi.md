@@ -4,6 +4,8 @@ date: 2026-09-03
 slug: pembelikten-kirmiziya-yasam-sahnesi
 excerpt: Çocukluğun pamuk helva pembeliği, kırmızının ateşten dilleri, sahnedeki oyuncunun samimiyeti ve köklerine tutunarak ilerleyen bir fidanın hikayesi.
 tags: [Kişisel, Sanat, Yaşam, Denemeler, Büyümek]
+translation: from-cotton-candy-pink-to-deep-red-the-stage-of-life
+lang: tr
 featured: true
 draft: false
 ---

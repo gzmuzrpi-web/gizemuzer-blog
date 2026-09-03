@@ -1,6 +1,8 @@
 ---
 title: İletişim
 slug: iletisim
+translation: contact
+lang: tr
 subtitle: Fikir alışverişi, iş birliği veya sadece bir merhaba demek için.
 ---
 

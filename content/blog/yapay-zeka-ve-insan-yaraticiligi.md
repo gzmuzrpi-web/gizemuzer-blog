@@ -4,6 +4,8 @@ date: 2026-08-28
 slug: yapay-zeka-ve-insan-yaraticiligi
 excerpt: Üretken yapay zeka araçları her geçen gün daha yetkin hale gelirken, insan dokunuşu ve bireysel bakış açısı nerede konumlanıyor?
 tags: [Yapay Zeka, Teknoloji, Felsefe]
+translation: human-creativity-in-the-age-of-ai
+lang: tr
 featured: true
 draft: false
 ---

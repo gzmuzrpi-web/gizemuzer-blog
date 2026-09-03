@@ -1,6 +1,8 @@
 ---
 title: Hakkımda
 slug: hakkimda
+translation: about
+lang: tr
 subtitle: Gizem Uzer kimdir, neler düşünür ve bu alanda ne inşa eder?
 ---
 

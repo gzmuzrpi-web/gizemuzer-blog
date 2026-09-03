@@ -4,6 +4,8 @@ date: 2026-09-03
 slug: yeni-bir-baslangic-ve-dijital-bahcem
 excerpt: Neden bir blog açtım? Düşüncelerimi, notlarımı ve keşiflerimi zamana direnen bir alanda paylaşmanın heyecanı üzerine.
 tags: [Kişisel, Manifestolar, Yazarlık]
+translation: welcome-to-my-digital-garden
+lang: tr
 featured: true
 draft: false
 ---

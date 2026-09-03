@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-builder.py - gizemuzer.com Static Site Generator
-Zero external dependencies, fast, produces modern semantic HTML/CSS/JS.
+builder.py - gizemuzer.xyz Bilingual Static Site Generator (TR & EN)
+Zero external dependencies, fast, semantic, high accessibility, and full i18n routing.
 """
 
 import os
@@ -12,16 +12,14 @@ from datetime import datetime
 from pathlib import Path
 
 SITE_URL = "https://gizemuzer.xyz"
-SITE_TITLE = "Gizem Uzer"
-SITE_TAGLINE = "Düşünceler, yazılar ve dijital bahçe"
-SITE_DESCRIPTION = "Gizem Uzer'in teknoloji, yapay zeka, sade yaşam ve yaratıcı üretim üzerine kişisel notları ve denemeleri."
 AUTHOR_NAME = "Gizem Uzer"
-AUTHOR_BIO = "Düşüncelerini, teknolojiye ve hayata dair gözlemlerini dijital bahçesinde paylaşan bir araştırmacı ve yazar."
 
 BASE_DIR = Path(__file__).resolve().parent
 CONTENT_DIR = BASE_DIR / "content"
 BLOG_DIR = CONTENT_DIR / "blog"
+BLOG_EN_DIR = CONTENT_DIR / "blog" / "en"
 PAGES_DIR = CONTENT_DIR / "pages"
+PAGES_EN_DIR = CONTENT_DIR / "pages" / "en"
 STATIC_DIR = BASE_DIR / "static"
 DIST_DIR = BASE_DIR / "dist"
 
@@ -30,7 +28,89 @@ MONTHS_TR = {
     7: "Temmuz", 8: "Ağustos", 9: "Eylül", 10: "Ekim", 11: "Kasım", 12: "Aralık"
 }
 
-def format_date_tr(date_val):
+MONTHS_EN = {
+    1: "January", 2: "February", 3: "March", 4: "April", 5: "May", 6: "June",
+    7: "July", 8: "August", 9: "September", 10: "October", 11: "November", 12: "December"
+}
+
+I18N = {
+    "tr": {
+        "site_title": "Gizem Uzer",
+        "site_tagline": "Düşünceler, yazılar ve dijital bahçe",
+        "site_description": "Gizem Uzer'in edebiyat, sade yaşam, gözlemler ve yaratıcı üretim üzerine kişisel notları ve denemeleri.",
+        "author_bio": "Düşüncelerini, edebiyata ve hayata dair gözlemlerini dijital bahçesinde paylaşan bir yazar.",
+        "nav_home": "Ana Sayfa",
+        "nav_blog": "Yazılar",
+        "nav_about": "Hakkımda",
+        "nav_contact": "İletişim",
+        "all_essays": "Tüm Yazılara Dön",
+        "read_time_suffix": "okuma",
+        "read_more": "Devamını Oku →",
+        "explore_post": "Yazıyı İncele →",
+        "featured": "Öne Çıkan Düşünceler",
+        "view_all": "Tümünü Gör →",
+        "recent": "Son Eklenenler",
+        "archive": "Arşive Git →",
+        "hero_tag": "✨ Kişisel Blog & Dijital Bahçe",
+        "hero_title": "Düşünceler, yazılar ve keşifler.",
+        "hero_lead": "Merhaba, ben <strong>Gizem Uzer</strong>. Edebiyat, hayat, içsel yolculuklar ve felsefe üzerine fikirlerimi demlediğim kişisel alanıma hoş geldiniz.",
+        "hero_btn_explore": "Yazıları Keşfet →",
+        "hero_btn_about": "Hakkımda",
+        "filter_all": "Tümü",
+        "search_placeholder": "Yazılarda ara (başlık veya konu)...",
+        "blog_title": "Yazılar & Düşünceler",
+        "blog_desc": "Edebiyat, gözlemler, içsel yolculuklar ve hayata dair notlar.",
+        "newsletter_title": "Yeni Yazılardan Haberdar Olun",
+        "newsletter_desc": "Yalnızca gerçekten paylaşmaya değer yeni bir düşünce ya da deneme yayınladığımda gelen sakin bir e-posta bülteni.",
+        "newsletter_placeholder": "E-posta adresiniz...",
+        "newsletter_btn": "Abone Ol",
+        "newsletter_alert": "Teşekkürler! Bülten listesine eklendiniz.",
+        "footer_rights": "Tüm hakları saklıdır.",
+        "footer_email": "E-posta",
+        "footer_rss": "RSS",
+        "switch_prompt": "🌐 This essay is also available in English:",
+        "switch_action": "Read in English ➔",
+    },
+    "en": {
+        "site_title": "Gizem Uzer",
+        "site_tagline": "Reflections, essays & digital garden",
+        "site_description": "Personal essays, reflections on literature, authenticity, and human nature by Gizem Uzer.",
+        "author_bio": "An essayist exploring thoughts, literature, and human nature in her quiet digital garden.",
+        "nav_home": "Home",
+        "nav_blog": "Essays",
+        "nav_about": "About",
+        "nav_contact": "Contact",
+        "all_essays": "Back to All Essays",
+        "read_time_suffix": "read",
+        "read_more": "Read More →",
+        "explore_post": "Read Essay →",
+        "featured": "Featured Essays",
+        "view_all": "View All →",
+        "recent": "Recent Essays",
+        "archive": "Go to Archive →",
+        "hero_tag": "✨ Personal Space & Digital Garden",
+        "hero_title": "Thoughts, essays and discoveries.",
+        "hero_lead": "Hello, I am <strong>Gizem Uzer</strong>. Welcome to my personal sanctuary where ideas on literature, human nature, and life’s subtle nuances steep without haste.",
+        "hero_btn_explore": "Explore Essays →",
+        "hero_btn_about": "About Me",
+        "filter_all": "All",
+        "search_placeholder": "Search essays (title or topic)...",
+        "blog_title": "Essays & Reflections",
+        "blog_desc": "Notes on literature, personal philosophy, human nature, and life.",
+        "newsletter_title": "Stay Connected",
+        "newsletter_desc": "A quiet email note, sent only when a new piece truly worth sharing is published.",
+        "newsletter_placeholder": "Your email address...",
+        "newsletter_btn": "Subscribe",
+        "newsletter_alert": "Thank you! You have been added to the newsletter.",
+        "footer_rights": "All rights reserved.",
+        "footer_email": "Email",
+        "footer_rss": "RSS",
+        "switch_prompt": "🌐 Bu yazıyı Türkçe oku:",
+        "switch_action": "Türkçe Oku ➔",
+    }
+}
+
+def format_date(date_val, lang="tr"):
     if isinstance(date_val, str):
         try:
             dt = datetime.strptime(date_val.strip(), "%Y-%m-%d")
@@ -40,7 +120,11 @@ def format_date_tr(date_val):
         dt = date_val
     else:
         return str(date_val)
-    return f"{dt.day} {MONTHS_TR.get(dt.month, '')} {dt.year}"
+
+    if lang == "tr":
+        return f"{dt.day} {MONTHS_TR.get(dt.month, '')} {dt.year}"
+    else:
+        return f"{MONTHS_EN.get(dt.month, '')} {dt.day}, {dt.year}"
 
 def parse_frontmatter(content):
     metadata = {}
@@ -55,166 +139,168 @@ def parse_frontmatter(content):
                     key, val = line.split(":", 1)
                     key = key.strip()
                     val = val.strip()
-                    # Handle boolean
                     if val.lower() == "true":
                         metadata[key] = True
                     elif val.lower() == "false":
                         metadata[key] = False
-                    # Handle list [a, b]
                     elif val.startswith("[") and val.endswith("]"):
-                        items = [x.strip().strip("'\"") for x in val[1:-1].split(",") if x.strip()]
+                        items = [x.strip() for x in val[1:-1].split(",") if x.strip()]
                         metadata[key] = items
                     else:
-                        metadata[key] = val.strip("'\"")
+                        metadata[key] = val
     return metadata, body.strip()
 
-def calculate_reading_time(text):
-    words = len(re.findall(r'\w+', text))
+def calculate_reading_time(text, lang="tr"):
+    words = len(text.split())
     minutes = max(1, round(words / 180))
-    return f"{minutes} dk okuma"
+    suffix = I18N[lang]["read_time_suffix"]
+    return f"{minutes} dk {suffix}" if lang == "tr" else f"{minutes} min {suffix}"
 
 def markdown_to_html(md_text):
-    """Clean and robust Markdown parser to HTML without third-party dependencies."""
     lines = md_text.splitlines()
     html_out = []
     in_code_block = False
     code_lang = ""
-    code_lines = []
+    code_buffer = []
     in_list = False
-    list_type = None # 'ul' or 'ol'
-    in_blockquote = False
-    quote_lines = []
+    list_tag = "ul"
+    in_quote = False
+    quote_buffer = []
 
     def flush_list():
-        nonlocal in_list, list_type
+        nonlocal in_list, list_tag
         if in_list:
-            html_out.append(f"</{list_type}>")
+            html_out.append(f"</{list_tag}>")
             in_list = False
-            list_type = None
 
     def flush_quote():
-        nonlocal in_blockquote, quote_lines
-        if in_blockquote:
-            quote_content = " ".join(quote_lines)
-            html_out.append(f"<blockquote><p>{parse_inline(quote_content)}</p></blockquote>")
-            in_blockquote = False
-            quote_lines = []
+        nonlocal in_quote, quote_buffer
+        if in_quote:
+            content = " ".join(quote_buffer)
+            html_out.append(f"<blockquote>{inline_markdown(content)}</blockquote>")
+            quote_buffer = []
+            in_quote = False
 
-    def parse_inline(text):
+    def inline_markdown(text):
         # Images: ![alt](url)
-        text = re.sub(r'!\[([^\]]*)\]\(([^)]+)\)', r'<img src="\2" alt="\1" loading="lazy" />', text)
-        # Links: [text](url)
-        text = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2">\1</a>', text)
-        # Bold: **text** or __text__
-        text = re.sub(r'(\*\*|__)(.*?)\1', r'<strong>\2</strong>', text)
-        # Italic: *text* or _text_
-        text = re.sub(r'(\*|_)(.*?)\1', r'<em>\2</em>', text)
+        text = re.sub(r'!\[([^\]]*)\]\(([^)]+)\)', r'<img src="\2" alt="\1" loading="lazy">', text)
+        # Bold: **text**
+        text = re.sub(r'\*\*([^*]+)\*\*', r'<strong>\1</strong>', text)
+        # Italic: *text*
+        text = re.sub(r'(?<!\*)\*([^*]+)\*(?!\*)', r'<em>\1</em>', text)
         # Inline code: `code`
         text = re.sub(r'`([^`]+)`', r'<code>\1</code>', text)
+        # Links: [text](url)
+        text = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2">\1</a>', text)
         return text
 
-    i = 0
-    while i < len(lines):
-        line = lines[i]
+    for line in lines:
+        stripped = line.strip()
 
-        # Code block fences
-        if line.startswith("```"):
+        # Code block
+        if stripped.startswith("```"):
             if in_code_block:
-                escaped_code = html.escape("\n".join(code_lines))
-                lang_attr = f' class="language-{code_lang}"' if code_lang else ""
-                html_out.append(f'<pre><code{lang_attr}>{escaped_code}</code></pre>')
+                escaped = html.escape("\n".join(code_buffer))
+                html_out.append(f'<pre><code class="language-{code_lang}">{escaped}</code></pre>')
+                code_buffer = []
                 in_code_block = False
-                code_lines = []
             else:
                 flush_list()
                 flush_quote()
+                code_lang = stripped[3:].strip()
                 in_code_block = True
-                code_lang = line[3:].strip()
-                code_lines = []
-            i += 1
             continue
 
         if in_code_block:
-            code_lines.append(line)
-            i += 1
+            code_buffer.append(line)
+            continue
+
+        # Horizontal rule
+        if re.match(r'^(---|___|\*\*\*)$', stripped):
+            flush_list()
+            flush_quote()
+            html_out.append("<hr>")
             continue
 
         # Blockquote
-        if line.startswith(">"):
+        if stripped.startswith(">"):
             flush_list()
-            in_blockquote = True
-            quote_lines.append(line.lstrip("> ").strip())
-            i += 1
+            in_quote = True
+            quote_buffer.append(stripped[1:].strip())
             continue
-        elif in_blockquote:
-            flush_quote()
-
-        # Horizontal rule
-        if re.match(r'^(-{3,}|\*{3,}|_{3,})$', line.strip()):
-            flush_list()
-            html_out.append("<hr />")
-            i += 1
-            continue
+        elif in_quote:
+            if stripped == "":
+                flush_quote()
+                continue
+            else:
+                quote_buffer.append(stripped)
+                continue
 
         # Headings
-        heading_match = re.match(r'^(#{1,6})\s+(.*)$', line)
-        if heading_match:
+        if stripped.startswith("### "):
             flush_list()
-            level = len(heading_match.group(1))
-            heading_text = heading_match.group(2).strip()
-            slug_id = re.sub(r'[^\w\- ]', '', heading_text).strip().lower().replace(" ", "-")
-            html_out.append(f'<h{level} id="{slug_id}">{parse_inline(heading_text)}</h{level}>')
-            i += 1
+            flush_quote()
+            html_out.append(f"<h3>{inline_markdown(stripped[4:])}</h3>")
             continue
-
-        # Unordered list: - or *
-        ul_match = re.match(r'^\s*[-*]\s+(.*)$', line)
-        if ul_match:
-            if not in_list or list_type != 'ul':
-                flush_list()
-                in_list = True
-                list_type = 'ul'
-                html_out.append("<ul>")
-            html_out.append(f"<li>{parse_inline(ul_match.group(1))}</li>")
-            i += 1
-            continue
-
-        # Ordered list: 1.
-        ol_match = re.match(r'^\s*(\d+)\.\s+(.*)$', line)
-        if ol_match:
-            if not in_list or list_type != 'ol':
-                flush_list()
-                in_list = True
-                list_type = 'ol'
-                html_out.append("<ol>")
-            html_out.append(f"<li>{parse_inline(ol_match.group(2))}</li>")
-            i += 1
-            continue
-
-        # Empty line
-        if not line.strip():
+        elif stripped.startswith("## "):
             flush_list()
-            i += 1
+            flush_quote()
+            html_out.append(f"<h2>{inline_markdown(stripped[3:])}</h2>")
+            continue
+        elif stripped.startswith("# "):
+            flush_list()
+            flush_quote()
+            html_out.append(f"<h1>{inline_markdown(stripped[2:])}</h1>")
             continue
 
-        # Paragraph
-        flush_list()
-        html_out.append(f"<p>{parse_inline(line)}</p>")
-        i += 1
+        # Lists
+        ul_match = re.match(r'^[-*+]\s+(.+)$', stripped)
+        ol_match = re.match(r'^\d+\.\s+(.+)$', stripped)
+
+        if ul_match or ol_match:
+            flush_quote()
+            cur_tag = "ol" if ol_match else "ul"
+            item_content = (ol_match or ul_match).group(1)
+
+            if not in_list or list_tag != cur_tag:
+                flush_list()
+                list_tag = cur_tag
+                html_out.append(f"<{list_tag}>")
+                in_list = True
+
+            html_out.append(f"  <li>{inline_markdown(item_content)}</li>")
+            continue
+        else:
+            flush_list()
+
+        # Paragraphs
+        if stripped == "":
+            flush_quote()
+            continue
+
+        flush_quote()
+        html_out.append(f"<p>{inline_markdown(stripped)}</p>")
 
     flush_list()
     flush_quote()
     return "\n".join(html_out)
 
-def render_base(title, description, content_html, active_nav="home", canonical_path="/", extra_head=""):
+def render_base(title, description, content_html, lang="tr", active_nav="home", canonical_path="/", extra_head="", switch_url=None):
+    t = I18N[lang]
     canonical_url = f"{SITE_URL}{canonical_path}"
-    full_title = f"{title} — {SITE_TITLE}" if title != SITE_TITLE else f"{SITE_TITLE} — {SITE_TAGLINE}"
+    full_title = f"{title} — {t['site_title']}" if title != t['site_title'] else f"{t['site_title']} — {t['site_tagline']}"
+
+    prefix = "" if lang == "tr" else "/en"
+    home_url = "/" if lang == "tr" else "/en/"
+    blog_url = f"{prefix}/blog/"
+    about_url = "/hakkimda/" if lang == "tr" else "/en/about/"
+    contact_url = "/iletisim/" if lang == "tr" else "/en/contact/"
 
     nav_links = [
-        ("/", "Ana Sayfa", "home"),
-        ("/blog/", "Yazılar", "blog"),
-        ("/hakkimda/", "Hakkımda", "about"),
-        ("/iletisim/", "İletişim", "contact")
+        (home_url, t["nav_home"], "home"),
+        (blog_url, t["nav_blog"], "blog"),
+        (about_url, t["nav_about"], "about"),
+        (contact_url, t["nav_contact"], "contact")
     ]
 
     nav_items_html = []
@@ -223,8 +309,30 @@ def render_base(title, description, content_html, active_nav="home", canonical_p
         nav_items_html.append(f'<a href="{url}"{active_class}>{label}</a>')
     nav_html = "\n".join(nav_items_html)
 
+    # Calculate Language Switcher URL
+    if switch_url:
+        other_lang_url = switch_url
+    else:
+        if lang == "tr":
+            other_lang_url = "/en" + canonical_path if canonical_path != "/" else "/en/"
+        else:
+            other_lang_url = canonical_path.replace("/en", "", 1) or "/"
+
+    tr_target = canonical_path if lang == "tr" else other_lang_url
+    en_target = other_lang_url if lang == "tr" else canonical_path
+
+    lang_switcher_html = f"""
+    <div class="lang-switcher">
+      <a href="{tr_target}" class="lang-btn {'active' if lang == 'tr' else ''}">TR</a>
+      <span class="lang-sep">/</span>
+      <a href="{en_target}" class="lang-btn {'active' if lang == 'en' else ''}">EN</a>
+    </div>
+    """
+
+    feed_url = "/feed.xml" if lang == "tr" else "/en/feed.xml"
+
     return f"""<!DOCTYPE html>
-<html lang="tr">
+<html lang="{lang}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -237,7 +345,7 @@ def render_base(title, description, content_html, active_nav="home", canonical_p
   <meta property="og:url" content="{canonical_url}">
   <meta property="og:title" content="{html.escape(full_title)}">
   <meta property="og:description" content="{html.escape(description)}">
-  <meta property="og:site_name" content="{SITE_TITLE}">
+  <meta property="og:site_name" content="{t['site_title']}">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
@@ -245,7 +353,7 @@ def render_base(title, description, content_html, active_nav="home", canonical_p
   <meta name="twitter:description" content="{html.escape(description)}">
 
   <!-- RSS & Sitemap -->
-  <link rel="alternate" type="application/rss+xml" title="{SITE_TITLE} RSS Feed" href="/feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="{t['site_title']} RSS Feed" href="{feed_url}">
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 
   <!-- Styles -->
@@ -257,16 +365,17 @@ def render_base(title, description, content_html, active_nav="home", canonical_p
 
   <header class="site-header">
     <div class="container nav-wrap">
-      <a href="/" class="site-logo">
+      <a href="{home_url}" class="site-logo">
         <span class="dot"></span>
-        <span>{SITE_TITLE}</span>
+        <span>{t['site_title']}</span>
       </a>
 
       <div class="nav-actions">
         <nav class="main-nav">
           {nav_html}
         </nav>
-        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Temayı değiştir">
+        {lang_switcher_html}
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </button>
       </div>
@@ -279,11 +388,11 @@ def render_base(title, description, content_html, active_nav="home", canonical_p
 
   <footer class="site-footer">
     <div class="container footer-content">
-      <p>&copy; {datetime.now().year} {SITE_TITLE}. Tüm hakları saklıdır.</p>
+      <p>&copy; {datetime.now().year} {t['site_title']}. {t['footer_rights']}</p>
       <div class="footer-links">
-        <a href="mailto:gzmuzr@gizemuzer.xyz">E-posta</a>
+        <a href="mailto:gzmuzr@gizemuzer.xyz">{t['footer_email']}</a>
         <a href="https://instagram.com/satirarasigzm" target="_blank" rel="noopener">Instagram</a>
-        <a href="/feed.xml">RSS</a>
+        <a href="{feed_url}">{t['footer_rss']}</a>
       </div>
     </div>
   </footer>
@@ -292,8 +401,48 @@ def render_base(title, description, content_html, active_nav="home", canonical_p
 </body>
 </html>"""
 
+def load_posts_from_dir(directory, lang="tr"):
+    posts = []
+    if not directory.exists():
+        return posts
+
+    for md_file in directory.glob("*.md"):
+        content = md_file.read_text(encoding="utf-8")
+        meta, body = parse_frontmatter(content)
+
+        if meta.get("draft", False):
+            continue
+
+        slug = meta.get("slug", md_file.stem)
+        title = meta.get("title", slug.replace("-", " ").title())
+        date_str = str(meta.get("date", "2026-09-01"))
+        excerpt = meta.get("excerpt", "")
+        tags = meta.get("tags", [])
+        featured = meta.get("featured", False)
+        translation = meta.get("translation", "")
+        reading_time = calculate_reading_time(body, lang=lang)
+        html_body = markdown_to_html(body)
+
+        posts.append({
+            "slug": slug,
+            "title": title,
+            "date": date_str,
+            "date_formatted": format_date(date_str, lang=lang),
+            "excerpt": excerpt,
+            "tags": tags,
+            "featured": featured,
+            "translation": translation,
+            "lang": lang,
+            "reading_time": reading_time,
+            "body_html": html_body,
+            "raw_body": body
+        })
+
+    posts.sort(key=lambda x: x["date"], reverse=True)
+    return posts
+
 def build_site():
-    print(f"🚀 Blog derleniyor: {SITE_URL}")
+    print(f"🚀 Blog derleniyor (TR & EN): {SITE_URL}")
     if DIST_DIR.exists():
         shutil.rmtree(DIST_DIR)
     DIST_DIR.mkdir(parents=True)
@@ -302,347 +451,409 @@ def build_site():
     if STATIC_DIR.exists():
         shutil.copytree(STATIC_DIR, DIST_DIR, dirs_exist_ok=True)
 
-    # 2. Parse all blog posts
-    posts = []
-    if BLOG_DIR.exists():
-        for md_file in BLOG_DIR.glob("*.md"):
-            content = md_file.read_text(encoding="utf-8")
-            meta, body = parse_frontmatter(content)
-            
-            if meta.get("draft", False):
-                continue
+    # 2. Parse Posts for both languages
+    posts_tr = load_posts_from_dir(BLOG_DIR, lang="tr")
+    posts_en = load_posts_from_dir(BLOG_EN_DIR, lang="en")
 
-            slug = meta.get("slug", md_file.stem)
-            title = meta.get("title", slug.replace("-", " ").title())
-            date_str = str(meta.get("date", "2026-09-01"))
-            excerpt = meta.get("excerpt", "")
-            tags = meta.get("tags", [])
-            featured = meta.get("featured", False)
-            reading_time = calculate_reading_time(body)
+    # Map for easy translation lookup
+    tr_by_slug = {p["slug"]: p for p in posts_tr}
+    en_by_slug = {p["slug"]: p for p in posts_en}
 
-            html_body = markdown_to_html(body)
+    # 3. Generate Individual Post Pages
+    def generate_posts(posts_list, lang):
+        t = I18N[lang]
+        prefix = "" if lang == "tr" else "/en"
+        all_tags = set()
 
-            posts.append({
-                "slug": slug,
-                "title": title,
-                "date": date_str,
-                "date_formatted": format_date_tr(date_str),
-                "excerpt": excerpt,
-                "tags": tags,
-                "featured": featured,
-                "reading_time": reading_time,
-                "body_html": html_body,
-                "raw_body": body
-            })
+        for idx, p in enumerate(posts_list):
+            for tg in p["tags"]:
+                all_tags.add(tg)
 
-    # Sort posts descending by date
-    posts.sort(key=lambda x: x["date"], reverse=True)
+            prev_p = posts_list[idx + 1] if idx + 1 < len(posts_list) else None
+            next_p = posts_list[idx - 1] if idx > 0 else None
 
-    # 3. Generate Individual Post Pages (/blog/[slug]/index.html)
-    all_tags = set()
-    for idx, p in enumerate(posts):
-        for t in p["tags"]:
-            all_tags.add(t)
+            tags_html = "".join([f'<a href="{prefix}/blog/?tag={html.escape(tg)}" class="tag-pill">#{tg}</a>' for tg in p["tags"]])
 
-        prev_post = posts[idx + 1] if idx + 1 < len(posts) else None
-        next_post = posts[idx - 1] if idx > 0 else None
+            nav_links_html = '<div style="display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); font-size: 0.95rem;">'
+            if prev_p:
+                nav_links_html += f'<a href="{prefix}/blog/{prev_p["slug"]}/" style="color: var(--text-muted); text-decoration: none;">← {html.escape(prev_p["title"])}</a>'
+            else:
+                nav_links_html += '<span></span>'
+            if next_p:
+                nav_links_html += f'<a href="{prefix}/blog/{next_p["slug"]}/" style="color: var(--text-muted); text-decoration: none;">{html.escape(next_p["title"])} →</a>'
+            nav_links_html += '</div>'
 
-        tags_html = "".join([f'<a href="/blog/?tag={html.escape(t)}" class="tag-pill">#{t}</a>' for t in p["tags"]])
+            # Translation notice
+            trans_slug = p.get("translation", "")
+            trans_html = ""
+            switch_url = None
+            if trans_slug:
+                if lang == "tr":
+                    switch_url = f"/en/blog/{trans_slug}/"
+                    trans_html = f"""
+                    <div class="translation-notice">
+                      <span>{t['switch_prompt']}</span>
+                      <a href="{switch_url}">{t['switch_action']}</a>
+                    </div>
+                    """
+                else:
+                    switch_url = f"/blog/{trans_slug}/"
+                    trans_html = f"""
+                    <div class="translation-notice">
+                      <span>{t['switch_prompt']}</span>
+                      <a href="{switch_url}">{t['switch_action']}</a>
+                    </div>
+                    """
 
-        nav_links_html = '<div style="display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); font-size: 0.95rem;">'
-        if prev_post:
-            nav_links_html += f'<a href="/blog/{prev_post["slug"]}/" style="color: var(--text-muted); text-decoration: none;">← {html.escape(prev_post["title"])}</a>'
-        else:
-            nav_links_html += '<span></span>'
-        if next_post:
-            nav_links_html += f'<a href="/blog/{next_post["slug"]}/" style="color: var(--text-muted); text-decoration: none;">{html.escape(next_post["title"])} →</a>'
-        nav_links_html += '</div>'
+            article_html = f"""
+            <article class="container">
+              <header class="article-header">
+                <a href="{prefix}/blog/" class="article-back-link">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                  {t['all_essays']}
+                </a>
+                {trans_html}
+                <h1>{html.escape(p["title"])}</h1>
+                <div class="article-meta-bar">
+                  <div class="author-chip">
+                    <span class="author-avatar-sm">GU</span>
+                    <span>{AUTHOR_NAME}</span>
+                  </div>
+                  <span>•</span>
+                  <time datetime="{p["date"]}">{p["date_formatted"]}</time>
+                  <span>•</span>
+                  <span>{p["reading_time"]}</span>
+                </div>
+              </header>
 
-        article_html = f"""
-        <article class="container">
-          <header class="article-header">
-            <a href="/blog/" class="article-back-link">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-              Tüm Yazılara Dön
-            </a>
-            <h1>{html.escape(p["title"])}</h1>
-            <div class="article-meta-bar">
-              <div class="author-chip">
-                <span class="author-avatar-sm">GU</span>
-                <span>{AUTHOR_NAME}</span>
+              <div class="prose">
+                {p["body_html"]}
               </div>
-              <span>•</span>
-              <time datetime="{p["date"]}">{p["date_formatted"]}</time>
-              <span>•</span>
-              <span>{p["reading_time"]}</span>
-            </div>
-          </header>
 
-          <div class="prose">
-            {p["body_html"]}
+              <div class="post-tags">
+                {tags_html}
+              </div>
+
+              <div class="author-card">
+                <div class="author-card-avatar">GU</div>
+                <div class="author-card-info">
+                  <h4>{AUTHOR_NAME}</h4>
+                  <p>{t['author_bio']}</p>
+                </div>
+              </div>
+
+              {nav_links_html}
+            </article>
+            """
+
+            out_dir = (DIST_DIR / "blog" / p["slug"]) if lang == "tr" else (DIST_DIR / "en" / "blog" / p["slug"])
+            out_dir.mkdir(parents=True, exist_ok=True)
+            canonical = f"/blog/{p['slug']}/" if lang == "tr" else f"/en/blog/{p['slug']}/"
+            
+            full_page = render_base(
+                title=p["title"],
+                description=p["excerpt"],
+                content_html=article_html,
+                lang=lang,
+                active_nav="blog",
+                canonical_path=canonical,
+                switch_url=switch_url
+            )
+            (out_dir / "index.html").write_text(full_page, encoding="utf-8")
+
+        return all_tags
+
+    tags_tr = generate_posts(posts_tr, "tr")
+    tags_en = generate_posts(posts_en, "en")
+
+    # 4. Generate Blog Listing Pages
+    def generate_blog_index(posts_list, tags_set, lang):
+        t = I18N[lang]
+        prefix = "" if lang == "tr" else "/en"
+
+        tag_chips = [f'<button class="filter-chip active" data-tag="all">{t["filter_all"]}</button>']
+        for tg in sorted(tags_set):
+            tag_chips.append(f'<button class="filter-chip" data-tag="{html.escape(tg)}">#{html.escape(tg)}</button>')
+        tag_chips_html = "\n".join(tag_chips)
+
+        cards_html = []
+        for p in posts_list:
+            tags_data = ",".join(p["tags"])
+            tags_badges = "".join([f'<span class="tag">#{tg}</span>' for tg in p["tags"]])
+            card = f"""
+            <a href="{prefix}/blog/{p["slug"]}/" class="post-card" data-title="{html.escape(p["title"].lower())}" data-excerpt="{html.escape(p["excerpt"].lower())}" data-tags="{html.escape(tags_data)}">
+              <div class="post-card-meta">
+                <time datetime="{p["date"]}">{p["date_formatted"]}</time>
+                <span>•</span>
+                <span>{p["reading_time"]}</span>
+                {tags_badges}
+              </div>
+              <h3>{html.escape(p["title"])}</h3>
+              <p class="excerpt">{html.escape(p["excerpt"])}</p>
+              <div class="post-card-footer">
+                <span>{t["read_more"]}</span>
+              </div>
+            </a>
+            """
+            cards_html.append(card)
+
+        blog_index_html = f"""
+        <div class="container" style="padding-top: 3.5rem; padding-bottom: 4rem;">
+          <h1 style="font-size: 2.4rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.5rem;">{t['blog_title']}</h1>
+          <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 2rem;">{t['blog_desc']}</p>
+
+          <div class="search-box">
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="blog-search" class="search-input" placeholder="{t['search_placeholder']}">
           </div>
 
-          <div class="post-tags">
-            {tags_html}
+          <div class="filter-tags">
+            {tag_chips_html}
           </div>
 
-          <div class="author-card">
-            <div class="author-card-avatar">GU</div>
-            <div class="author-card-info">
-              <h4>{AUTHOR_NAME}</h4>
-              <p>{AUTHOR_BIO}</p>
-            </div>
+          <div class="post-list" id="post-list">
+            {"".join(cards_html)}
           </div>
-
-          {nav_links_html}
-        </article>
+        </div>
         """
 
-        post_dir = DIST_DIR / "blog" / p["slug"]
-        post_dir.mkdir(parents=True, exist_ok=True)
-        full_page = render_base(
-            title=p["title"],
-            description=p["excerpt"],
-            content_html=article_html,
-            active_nav="blog",
-            canonical_path=f"/blog/{p['slug']}/"
+        out_dir = (DIST_DIR / "blog") if lang == "tr" else (DIST_DIR / "en" / "blog")
+        out_dir.mkdir(parents=True, exist_ok=True)
+        canonical = "/blog/" if lang == "tr" else "/en/blog/"
+        switch_url = "/en/blog/" if lang == "tr" else "/blog/"
+
+        (out_dir / "index.html").write_text(
+            render_base(t["nav_blog"], t["blog_desc"], blog_index_html, lang=lang, active_nav="blog", canonical_path=canonical, switch_url=switch_url),
+            encoding="utf-8"
         )
-        (post_dir / "index.html").write_text(full_page, encoding="utf-8")
 
-    # 4. Generate Blog Listing (/blog/index.html)
-    tag_chips = ['<button class="filter-chip active" data-tag="all">Tümü</button>']
-    for t in sorted(all_tags):
-        tag_chips.append(f'<button class="filter-chip" data-tag="{html.escape(t)}">#{html.escape(t)}</button>')
-    tag_chips_html = "\n".join(tag_chips)
+    generate_blog_index(posts_tr, tags_tr, "tr")
+    generate_blog_index(posts_en, tags_en, "en")
 
-    cards_html = []
-    for p in posts:
-        tags_data = ",".join(p["tags"])
-        tags_badges = "".join([f'<span class="tag">#{t}</span>' for t in p["tags"]])
-        card = f"""
-        <a href="/blog/{p["slug"]}/" class="post-card" data-title="{html.escape(p["title"].lower())}" data-excerpt="{html.escape(p["excerpt"].lower())}" data-tags="{html.escape(tags_data)}">
-          <div class="post-card-meta">
-            <time datetime="{p["date"]}">{p["date_formatted"]}</time>
-            <span>•</span>
-            <span>{p["reading_time"]}</span>
-            {tags_badges}
+    # 5. Generate Home Pages
+    def generate_home(posts_list, lang):
+        t = I18N[lang]
+        prefix = "" if lang == "tr" else "/en"
+        about_link = "/hakkimda/" if lang == "tr" else "/en/about/"
+
+        featured_cards = []
+        for p in [x for x in posts_list if x["featured"]][:2]:
+            tags_badges = "".join([f'<span class="tag">#{tg}</span>' for tg in p["tags"]])
+            card = f"""
+            <a href="{prefix}/blog/{p["slug"]}/" class="post-card">
+              <div class="post-card-meta">
+                <time datetime="{p["date"]}">{p["date_formatted"]}</time>
+                <span>•</span>
+                <span>{p["reading_time"]}</span>
+                {tags_badges}
+              </div>
+              <h3>{html.escape(p["title"])}</h3>
+              <p class="excerpt">{html.escape(p["excerpt"])}</p>
+              <div class="post-card-footer">
+                <span>{t["read_more"]}</span>
+              </div>
+            </a>
+            """
+            featured_cards.append(card)
+
+        recent_cards = []
+        for p in posts_list[:3]:
+            tags_badges = "".join([f'<span class="tag">#{tg}</span>' for tg in p["tags"]])
+            card = f"""
+            <a href="{prefix}/blog/{p["slug"]}/" class="post-card">
+              <div class="post-card-meta">
+                <time datetime="{p["date"]}">{p["date_formatted"]}</time>
+                <span>•</span>
+                <span>{p["reading_time"]}</span>
+                {tags_badges}
+              </div>
+              <h3>{html.escape(p["title"])}</h3>
+              <p class="excerpt">{html.escape(p["excerpt"])}</p>
+              <div class="post-card-footer">
+                <span>{t["explore_post"]}</span>
+              </div>
+            </a>
+            """
+            recent_cards.append(card)
+
+        home_html = f"""
+        <section class="hero container">
+          <div class="hero-tag">{t['hero_tag']}</div>
+          <h1>{t['hero_title']}</h1>
+          <p class="lead">{t['hero_lead']}</p>
+          <div class="hero-meta">
+            <a href="{prefix}/blog/" class="btn btn-primary">{t['hero_btn_explore']}</a>
+            <a href="{about_link}" class="btn btn-secondary">{t['hero_btn_about']}</a>
           </div>
-          <h3>{html.escape(p["title"])}</h3>
-          <p class="excerpt">{html.escape(p["excerpt"])}</p>
-          <div class="post-card-footer">
-            <span>Devamını Oku →</span>
+        </section>
+
+        <div class="container">
+          <div class="section-header">
+            <h2>{t['featured']}</h2>
+            <a href="{prefix}/blog/" class="view-all">{t['view_all']}</a>
           </div>
-        </a>
+          <div class="post-list">
+            {"".join(featured_cards)}
+          </div>
+
+          <div class="section-header">
+            <h2>{t['recent']}</h2>
+            <a href="{prefix}/blog/" class="view-all">{t['archive']}</a>
+          </div>
+          <div class="post-list">
+            {"".join(recent_cards)}
+          </div>
+
+          <div class="newsletter-card">
+            <h3>{t['newsletter_title']}</h3>
+            <p>{t['newsletter_desc']}</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('{t['newsletter_alert']}');">
+              <input type="email" placeholder="{t['newsletter_placeholder']}" required>
+              <button type="submit" class="btn btn-primary">{t['newsletter_btn']}</button>
+            </form>
+          </div>
+        </div>
         """
-        cards_html.append(card)
 
-    blog_index_html = f"""
-    <div class="container" style="padding-top: 3.5rem; padding-bottom: 4rem;">
-      <h1 style="font-size: 2.4rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.5rem;">Yazılar & Düşünceler</h1>
-      <p style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 2rem;">Teknoloji, yapay zeka, yaratıcı üretim ve hayata dair notlar.</p>
+        out_file = (DIST_DIR / "index.html") if lang == "tr" else (DIST_DIR / "en" / "index.html")
+        out_file.parent.mkdir(parents=True, exist_ok=True)
+        canonical = "/" if lang == "tr" else "/en/"
+        switch_url = "/en/" if lang == "tr" else "/"
 
-      <div class="search-box">
-        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="text" id="blog-search" class="search-input" placeholder="Yazılarda ara (başlık veya konu)...">
-      </div>
+        out_file.write_text(
+            render_base(t["site_title"], t["site_description"], home_html, lang=lang, active_nav="home", canonical_path=canonical, switch_url=switch_url),
+            encoding="utf-8"
+        )
 
-      <div class="filter-tags">
-        {tag_chips_html}
-      </div>
+    generate_home(posts_tr, "tr")
+    generate_home(posts_en, "en")
 
-      <div class="post-list" id="post-list">
-        {"".join(cards_html)}
-      </div>
-    </div>
-    """
-    blog_dir = DIST_DIR / "blog"
-    blog_dir.mkdir(parents=True, exist_ok=True)
-    (blog_dir / "index.html").write_text(
-        render_base("Yazılar", "Gizem Uzer'in tüm yazıları ve düşünceleri.", blog_index_html, active_nav="blog", canonical_path="/blog/"),
-        encoding="utf-8"
-    )
+    # 6. Generate About Pages
+    def generate_about(file_path, lang):
+        t = I18N[lang]
+        title = "Hakkımda" if lang == "tr" else "About"
+        subtitle = "Gizem Uzer kimdir?" if lang == "tr" else "Who is Gizem Uzer?"
+        body_html = ""
+        if file_path.exists():
+            meta, body = parse_frontmatter(file_path.read_text(encoding="utf-8"))
+            title = meta.get("title", title)
+            subtitle = meta.get("subtitle", subtitle)
+            body_html = markdown_to_html(body)
 
-    # 5. Generate Home Page (/index.html)
-    featured_cards = []
-    for p in [x for x in posts if x["featured"]][:2]:
-        tags_badges = "".join([f'<span class="tag">#{t}</span>' for t in p["tags"]])
-        card = f"""
-        <a href="/blog/{p["slug"]}/" class="post-card">
-          <div class="post-card-meta">
-            <time datetime="{p["date"]}">{p["date_formatted"]}</time>
-            <span>•</span>
-            <span>{p["reading_time"]}</span>
-            {tags_badges}
+        about_page_html = f"""
+        <div class="container" style="padding: 3.5rem 1.5rem 5rem;">
+          <header class="article-header" style="margin-bottom: 2rem;">
+            <h1 style="font-size: 2.6rem;">{html.escape(title)}</h1>
+            <p style="font-size: 1.2rem; color: var(--text-muted);">{html.escape(subtitle)}</p>
+          </header>
+          <div class="prose">
+            {body_html}
           </div>
-          <h3>{html.escape(p["title"])}</h3>
-          <p class="excerpt">{html.escape(p["excerpt"])}</p>
-          <div class="post-card-footer">
-            <span>Devamını Oku →</span>
-          </div>
-        </a>
+        </div>
         """
-        featured_cards.append(card)
 
-    recent_cards = []
-    for p in posts[:3]:
-        tags_badges = "".join([f'<span class="tag">#{t}</span>' for t in p["tags"]])
-        card = f"""
-        <a href="/blog/{p["slug"]}/" class="post-card">
-          <div class="post-card-meta">
-            <time datetime="{p["date"]}">{p["date_formatted"]}</time>
-            <span>•</span>
-            <span>{p["reading_time"]}</span>
-            {tags_badges}
+        out_dir = (DIST_DIR / "hakkimda") if lang == "tr" else (DIST_DIR / "en" / "about")
+        out_dir.mkdir(parents=True, exist_ok=True)
+        canonical = "/hakkimda/" if lang == "tr" else "/en/about/"
+        switch_url = "/en/about/" if lang == "tr" else "/hakkimda/"
+
+        (out_dir / "index.html").write_text(
+            render_base(title, subtitle, about_page_html, lang=lang, active_nav="about", canonical_path=canonical, switch_url=switch_url),
+            encoding="utf-8"
+        )
+
+    generate_about(PAGES_DIR / "about.md", "tr")
+    generate_about(PAGES_EN_DIR / "about.md", "en")
+
+    # 7. Generate Contact Pages
+    def generate_contact(file_path, lang):
+        t = I18N[lang]
+        title = "İletişim" if lang == "tr" else "Contact"
+        subtitle = "Bağlantıda kalalım" if lang == "tr" else "Let's connect"
+        body_html = ""
+        if file_path.exists():
+            meta, body = parse_frontmatter(file_path.read_text(encoding="utf-8"))
+            title = meta.get("title", title)
+            subtitle = meta.get("subtitle", subtitle)
+            body_html = markdown_to_html(body)
+
+        contact_page_html = f"""
+        <div class="container" style="padding: 3.5rem 1.5rem 5rem;">
+          <header class="article-header" style="margin-bottom: 2rem;">
+            <h1 style="font-size: 2.6rem;">{html.escape(title)}</h1>
+            <p style="font-size: 1.2rem; color: var(--text-muted);">{html.escape(subtitle)}</p>
+          </header>
+          <div class="prose">
+            {body_html}
           </div>
-          <h3>{html.escape(p["title"])}</h3>
-          <p class="excerpt">{html.escape(p["excerpt"])}</p>
-          <div class="post-card-footer">
-            <span>Yazıyı İncele →</span>
-          </div>
-        </a>
+        </div>
         """
-        recent_cards.append(card)
 
-    home_html = f"""
-    <section class="hero container">
-      <div class="hero-tag">✨ Kişisel Blog & Dijital Bahçe</div>
-      <h1>Düşünceler, yazılar ve keşifler.</h1>
-      <p class="lead">
-        Merhaba, ben <strong>Gizem Uzer</strong>. Teknoloji, yapay zeka, insan yaratıcılığı ve sade yaşam üzerine fikirlerimi demlediğim kişisel alanıma hoş geldiniz.
-      </p>
-      <div class="hero-meta">
-        <a href="/blog/" class="btn btn-primary">Yazıları Keşfet →</a>
-        <a href="/hakkimda/" class="btn btn-secondary">Hakkımda</a>
-      </div>
-    </section>
+        out_dir = (DIST_DIR / "iletisim") if lang == "tr" else (DIST_DIR / "en" / "contact")
+        out_dir.mkdir(parents=True, exist_ok=True)
+        canonical = "/iletisim/" if lang == "tr" else "/en/contact/"
+        switch_url = "/en/contact/" if lang == "tr" else "/iletisim/"
 
-    <div class="container">
-      <div class="section-header">
-        <h2>Öne Çıkan Düşünceler</h2>
-        <a href="/blog/" class="view-all">Tümünü Gör →</a>
-      </div>
-      <div class="post-list">
-        {"".join(featured_cards)}
-      </div>
+        (out_dir / "index.html").write_text(
+            render_base(title, subtitle, contact_page_html, lang=lang, active_nav="contact", canonical_path=canonical, switch_url=switch_url),
+            encoding="utf-8"
+        )
 
-      <div class="section-header">
-        <h2>Son Eklenenler</h2>
-        <a href="/blog/" class="view-all">Arşive Git →</a>
-      </div>
-      <div class="post-list">
-        {"".join(recent_cards)}
-      </div>
+    generate_contact(PAGES_DIR / "contact.md", "tr")
+    generate_contact(PAGES_EN_DIR / "contact.md", "en")
 
-      <div class="newsletter-card">
-        <h3>Yeni Yazılardan Haberdar Olun</h3>
-        <p>Yalnızca gerçekten paylaşmaya değer yeni bir düşünce ya da makale yayınladığımda gelen sakin bir e-posta bülteni.</p>
-        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Teşekkürler! Bülten listesine eklendiniz.');">
-          <input type="email" placeholder="E-posta adresiniz..." required>
-          <button type="submit" class="btn btn-primary">Abone Ol</button>
-        </form>
-      </div>
-    </div>
-    """
-    (DIST_DIR / "index.html").write_text(
-        render_base(SITE_TITLE, SITE_DESCRIPTION, home_html, active_nav="home", canonical_path="/"),
-        encoding="utf-8"
-    )
-
-    # 6. Generate About Page (/hakkimda/index.html)
-    about_file = PAGES_DIR / "about.md"
-    about_body = ""
-    about_title = "Hakkımda"
-    about_subtitle = "Gizem Uzer kimdir?"
-    if about_file.exists():
-        meta, body = parse_frontmatter(about_file.read_text(encoding="utf-8"))
-        about_title = meta.get("title", about_title)
-        about_subtitle = meta.get("subtitle", about_subtitle)
-        about_body = markdown_to_html(body)
-
-    about_page_html = f"""
-    <div class="container" style="padding: 3.5rem 1.5rem 5rem;">
-      <header class="article-header" style="margin-bottom: 2rem;">
-        <h1 style="font-size: 2.6rem;">{html.escape(about_title)}</h1>
-        <p style="font-size: 1.2rem; color: var(--text-muted);">{html.escape(about_subtitle)}</p>
-      </header>
-      <div class="prose">
-        {about_body}
-      </div>
-    </div>
-    """
-    about_dir = DIST_DIR / "hakkimda"
-    about_dir.mkdir(parents=True, exist_ok=True)
-    (about_dir / "index.html").write_text(
-        render_base(about_title, about_subtitle, about_page_html, active_nav="about", canonical_path="/hakkimda/"),
-        encoding="utf-8"
-    )
-
-    # 7. Generate Contact Page (/iletisim/index.html)
-    contact_file = PAGES_DIR / "contact.md"
-    contact_body = ""
-    contact_title = "İletişim"
-    contact_subtitle = "Bağlantıda kalalım"
-    if contact_file.exists():
-        meta, body = parse_frontmatter(contact_file.read_text(encoding="utf-8"))
-        contact_title = meta.get("title", contact_title)
-        contact_subtitle = meta.get("subtitle", contact_subtitle)
-        contact_body = markdown_to_html(body)
-
-    contact_page_html = f"""
-    <div class="container" style="padding: 3.5rem 1.5rem 5rem;">
-      <header class="article-header" style="margin-bottom: 2rem;">
-        <h1 style="font-size: 2.6rem;">{html.escape(contact_title)}</h1>
-        <p style="font-size: 1.2rem; color: var(--text-muted);">{html.escape(contact_subtitle)}</p>
-      </header>
-      <div class="prose">
-        {contact_body}
-      </div>
-    </div>
-    """
-    contact_dir = DIST_DIR / "iletisim"
-    contact_dir.mkdir(parents=True, exist_ok=True)
-    (contact_dir / "index.html").write_text(
-        render_base(contact_title, contact_subtitle, contact_page_html, active_nav="contact", canonical_path="/iletisim/"),
-        encoding="utf-8"
-    )
-
-    # 8. Generate RSS 2.0 Feed (/feed.xml)
-    rss_items = []
-    for p in posts:
-        dt = datetime.strptime(p["date"], "%Y-%m-%d")
-        pub_date = dt.strftime("%a, %d %b %Y 00:00:00 +0300")
-        item_xml = f"""    <item>
+    # 8. Generate RSS 2.0 Feeds
+    def generate_rss(posts_list, lang, out_file):
+        t = I18N[lang]
+        prefix = "" if lang == "tr" else "/en"
+        items = []
+        for p in posts_list:
+            dt = datetime.strptime(p["date"], "%Y-%m-%d")
+            pub_date = dt.strftime("%a, %d %b %Y 00:00:00 +0300")
+            item_xml = f"""    <item>
       <title>{html.escape(p["title"])}</title>
-      <link>{SITE_URL}/blog/{p["slug"]}/</link>
-      <guid isPermaLink="true">{SITE_URL}/blog/{p["slug"]}/</guid>
+      <link>{SITE_URL}{prefix}/blog/{p["slug"]}/</link>
+      <guid isPermaLink="true">{SITE_URL}{prefix}/blog/{p["slug"]}/</guid>
       <pubDate>{pub_date}</pubDate>
       <description>{html.escape(p["excerpt"])}</description>
     </item>"""
-        rss_items.append(item_xml)
+            items.append(item_xml)
 
-    rss_xml = f"""<?xml version="1.0" encoding="UTF-8"?>
+        feed_xml = f"""<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>{SITE_TITLE}</title>
-    <link>{SITE_URL}</link>
-    <description>{SITE_DESCRIPTION}</description>
-    <language>tr</language>
-    <atom:link href="{SITE_URL}/feed.xml" rel="self" type="application/rss+xml"/>
-    {"\n".join(rss_items)}
+    <title>{t['site_title']}</title>
+    <link>{SITE_URL}{prefix}/</link>
+    <description>{t['site_description']}</description>
+    <language>{lang}</language>
+    <atom:link href="{SITE_URL}{prefix}/feed.xml" rel="self" type="application/rss+xml"/>
+    {"\n".join(items)}
   </channel>
 </rss>"""
-    (DIST_DIR / "feed.xml").write_text(rss_xml, encoding="utf-8")
+        out_file.parent.mkdir(parents=True, exist_ok=True)
+        out_file.write_text(feed_xml, encoding="utf-8")
 
-    # 9. Generate Sitemap (/sitemap.xml)
+    generate_rss(posts_tr, "tr", DIST_DIR / "feed.xml")
+    generate_rss(posts_en, "en", DIST_DIR / "en" / "feed.xml")
+
+    # 9. Unified Sitemap (/sitemap.xml)
     sitemap_urls = [
         f"  <url><loc>{SITE_URL}/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>",
+        f"  <url><loc>{SITE_URL}/en/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>",
         f"  <url><loc>{SITE_URL}/blog/</loc><changefreq>daily</changefreq><priority>0.9</priority></url>",
+        f"  <url><loc>{SITE_URL}/en/blog/</loc><changefreq>daily</changefreq><priority>0.9</priority></url>",
         f"  <url><loc>{SITE_URL}/hakkimda/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>",
+        f"  <url><loc>{SITE_URL}/en/about/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>",
         f"  <url><loc>{SITE_URL}/iletisim/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>",
+        f"  <url><loc>{SITE_URL}/en/contact/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>",
     ]
-    for p in posts:
+    for p in posts_tr:
         sitemap_urls.append(
             f"  <url><loc>{SITE_URL}/blog/{p['slug']}/</loc><lastmod>{p['date']}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>"
+        )
+    for p in posts_en:
+        sitemap_urls.append(
+            f"  <url><loc>{SITE_URL}/en/blog/{p['slug']}/</loc><lastmod>{p['date']}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>"
         )
 
     sitemap_xml = f"""<?xml version="1.0" encoding="UTF-8"?>
@@ -659,7 +870,7 @@ Sitemap: {SITE_URL}/sitemap.xml
 """
     (DIST_DIR / "robots.txt").write_text(robots_txt, encoding="utf-8")
 
-    print(f"✨ Başarıyla tamamlandı: {len(posts)} yazı derlendi -> dist/")
+    print(f"✨ Başarıyla tamamlandı: {len(posts_tr)} TR + {len(posts_en)} EN yazı derlendi -> dist/")
 
 if __name__ == "__main__":
     build_site()

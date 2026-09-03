@@ -4,6 +4,8 @@ date: 2021-04-17
 slug: kusurun-isigi-ve-aynanin-iki-yuzu
 excerpt: Haliç kıyısında bir pencere kenarından süzülen ışıklar, kusurların açtığı kapılar ve Şems ile Mevlânâ’nın aynasında insanın eksik güzelliği üzerine.
 tags: [Felsefe, Edebiyat, Denemeler]
+translation: the-light-of-imperfection-and-the-two-faces-of-the-mirror
+lang: tr
 featured: true
 draft: false
 ---
