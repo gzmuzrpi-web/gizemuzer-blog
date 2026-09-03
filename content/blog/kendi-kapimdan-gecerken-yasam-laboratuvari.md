@@ -14,7 +14,7 @@ Beni uzun zamandır tanıyan dostlarım bilir; kendimi hep geliştirmeye, ruhum 
 
 Bu yol beni ne kadar zorlasa da, zaman zaman yalnızlığın en çetin köşelerine itse de, bugün durduğum yerden ve vardığım noktadan gurur duyuyorum. Benim için bu yolculuğun devamı var; belki mekânların, belki rollerin, belki de pek çok şeyin değiştiği yeni bir formda... Ama kesinlikle var.
 
-Bunları satırlara dökmek istedim; çünkü en başta benden asla vazgeçmeyen **Abime ve Anneme** sonsuz bir minnet borçluyum. Beni hiç sorgulamadan, zerre şüphe duymadan yanımda tuttular; her ne olursa olsun orada olacaklarını her an hissettirdiler. Bazen bazı şeylerin dilde bir izahı yoktur. Hatta en yakınınız olan ailenize bile kelimelerle anlatamadığınız bir içsel mücadelenin ortasında yeşermeye çalışırsınız. İşte tam da öyle dönemlerde koşulsuz yanımda olmaları benim için paha biçilemezdi.
+Bunları satırlara dökmek istedim; çünkü en başta benden asla vazgeçmeyen **Abime ve Anneme** sonsuz bir minnet borçluyum. Beni hiç sorgulamadan, zerre şüphe duymadan yanımda durdular; her ne olursa olsun orada olacaklarını her an hissettirdiler. Bazen bazı şeylerin dilde bir izahı yoktur. Hatta en yakınınız olan ailenize bile kelimelerle anlatamadığınız bir hayatın içinde yeşermeye çalışırsınız; işte tam da öyle dönemlerde koşulsuz yanımda olmaları benim için paha biçilemezdi.
 
 Yalnızca ailem değil; iniş çıkışlarımı kendi doğal ritimleriyle kabullenen, beni hiç yanlış anlamadan hep destekleyen o birkaç özel dostuma da kalpten teşekkür ediyorum. İsimlerini buraya yazmıyorum; çünkü ikisi de benim hayatımdaki yerlerinin ne kadar vazgeçilmez olduğunu çok iyi bilirler *(E & E — Tesadüf diye bir şey yoktur)*. 
 
