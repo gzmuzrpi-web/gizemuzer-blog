@@ -115,7 +115,7 @@ def create_quote_card(quote_lines, author, essay_title, filename, badge="SATIR A
     # Forest green pill button
     draw.rounded_rectangle([btn_x, btn_y, btn_x + btn_w, btn_y + btn_h], radius=27, fill=COLOR_FOREST)
     
-    url_text = "Yazının devamı ➔ gizemuzer.xyz"
+    url_text = "Yazının devamı: gizemuzer.xyz"
     bbox_url = draw.textbbox((0, 0), url_text, font=font_url)
     url_w = bbox_url[2] - bbox_url[0]
     draw.text((btn_x + (btn_w - url_w) // 2, btn_y + 14), url_text, fill=COLOR_WHITE, font=font_url)

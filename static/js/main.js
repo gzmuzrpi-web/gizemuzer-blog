@@ -125,5 +125,26 @@
         });
       });
     });
+
+    // 5. Invisible Visitor Telemetry Collector (Zero UI, Zero Cookies)
+    try {
+      const payload = {
+        path: window.location.pathname,
+        referrer: document.referrer || 'direct',
+        screen: `${window.screen.width}x${window.screen.height}`,
+        lang: navigator.language || '',
+        ts: new Date().toISOString()
+      };
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon('/api/collect', JSON.stringify(payload));
+      } else {
+        fetch('/api/collect', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+          keepalive: true
+        });
+      }
+    } catch (e) {}
   });
 })();
