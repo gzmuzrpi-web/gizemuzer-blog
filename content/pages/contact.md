@@ -10,7 +10,7 @@ Düşünceleriniz, geri bildirimleriniz veya ortak çalışma önerileriniz içi
 
 ## Kanallar
 
-- **E-posta:** [gzmuzr@gizemuzer.xyz](mailto:gzmuzr@gizemuzer.xyz)
+- **E-posta:** [gzmuzrpi@gmail.com](mailto:gzmuzrpi@gmail.com)
 - **Instagram:** [@satirarasigzm](https://instagram.com/satirarasigzm)
 
 Yazılarımdan anında haberdar olmak isterseniz sitenin [RSS akışını](/feed.xml) da takip edebilirsiniz.

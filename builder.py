@@ -393,7 +393,7 @@ def render_base(title, description, content_html, lang="tr", active_nav="home", 
     <div class="container footer-content">
       <p>&copy; {datetime.now().year} {t['site_title']}. {t['footer_rights']}</p>
       <div class="footer-links">
-        <a href="mailto:gzmuzr@gizemuzer.xyz">{t['footer_email']}</a>
+        <a href="mailto:gzmuzrpi@gmail.com">{t['footer_email']}</a>
         <a href="https://instagram.com/satirarasigzm" target="_blank" rel="noopener">Instagram</a>
         <a href="{feed_url}">{t['footer_rss']}</a>
       </div>

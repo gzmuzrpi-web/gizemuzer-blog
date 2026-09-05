@@ -4,3 +4,6 @@ __pycache__/
 dist/
 .vscode/
 .idea/
+.env
+visitors_data.json
+visitors_data.csv
