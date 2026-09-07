@@ -8,7 +8,7 @@ import os
 import re
 import shutil
 import html
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 SITE_URL = "https://gizemuzer.xyz"
@@ -417,7 +417,8 @@ def load_posts_from_dir(directory, lang="tr"):
             continue
 
         date_str = str(meta.get("date", "2026-09-01"))
-        today_str = datetime.now().strftime("%Y-%m-%d")
+        tz_tr = timezone(timedelta(hours=3))
+        today_str = datetime.now(tz_tr).strftime("%Y-%m-%d")
         if date_str > today_str:
             # İleride bir tarihe zamanlanmış yazı, günü gelince otomatik yayına girer
             continue
