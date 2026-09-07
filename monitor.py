@@ -33,6 +33,8 @@ PAGES = [
     ("/hakkimda/", "Hakkımda"),
     ("/en/about/", "About"),
     ("/iletisim/", "İletişim"),
+    ("/blog/koddan-iradeye-gelecegi-tahmin-etmek-degil-onu-yazmak/", "Koddan İradeye (TR)"),
+    ("/en/blog/from-code-to-will-do-not-predict-the-future-write-it/", "From Code to Will (EN)"),
     ("/blog/ofke-bir-karakter-kusuru-degil-emniyet-arayisidir/", "Öfke & Emniyet Arayışı (TR)"),
     ("/en/blog/anger-is-not-a-character-flaw-it-is-a-cry-for-safety/", "Anger & Safety (EN)"),
     ("/blog/yapay-zeka-bir-kod-meselesi-degil-insan-sinavidir/", "Yapay Zeka & İnsan Sınavı (TR)"),
