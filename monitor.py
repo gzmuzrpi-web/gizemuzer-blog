@@ -33,6 +33,8 @@ PAGES = [
     ("/hakkimda/", "Hakkımda"),
     ("/en/about/", "About"),
     ("/iletisim/", "İletişim"),
+    ("/blog/ofke-bir-karakter-kusuru-degil-emniyet-arayisidir/", "Öfke & Emniyet Arayışı (TR)"),
+    ("/en/blog/anger-is-not-a-character-flaw-it-is-a-cry-for-safety/", "Anger & Safety (EN)"),
     ("/blog/yapay-zeka-bir-kod-meselesi-degil-insan-sinavidir/", "Yapay Zeka & İnsan Sınavı (TR)"),
     ("/en/blog/ai-is-not-a-technical-challenge-it-is-human/", "AI Human Challenge (EN)"),
     ("/blog/ders-vermek-icin-degil-dersimi-aldigim-icin-gidiyorum/", "Dersimi Aldım Gidiyorum (TR)"),
