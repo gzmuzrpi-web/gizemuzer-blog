@@ -29,6 +29,7 @@ Bu belge, Gizem Uzer'in dijital bahçesinde üretilen ve derlenen her yazının 
 
 * ❌ Klişe kişisel gelişim tavsiyeleri verilmez (*"Pozitif düşünün", "Her şey çok güzel olacak" gibi yapaylıklar yasaktır*).
 * ❌ Yapay zeka klişeleri veya robotik ifadeler kullanılmaz.
+* ❌ Belirli bir yazıya ait kapanış kalıpları (örneğin *"Hepsi bu."*) başka yazılarda asla şablon gibi tekrarlanmaz; her yazının finali kendi temasına ve ruhuna has, özgün bir vuruşla noktalanır.
 * ❌ Başkalarını suçlayan, intikam arayan veya sitem dolu cümleler kurulmaz; odak daima insanın kendi uyanışı ve içsel gücüdür.
 * ❌ İçi boş, süslü edebiyat yapılmaz; her cümlenin hayatın içinden gelen gerçek bir karşılığı ve ağırlığı olmalıdır.
 

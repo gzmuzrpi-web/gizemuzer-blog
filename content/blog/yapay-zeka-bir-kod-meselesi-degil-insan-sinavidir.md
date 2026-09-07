@@ -44,8 +44,6 @@ Yapay zeka çağında en büyük ayrışma kodlama dillerinde değil; insanın k
 
 Teknoloji dünyayı hızlandırabilir; fakat geleceğe yön verecek olan şey daima insan kalabilme dirayetimiz olacak.
 
-**Hepsi bu.**
-
 ---
 
 *Eylül 2026*

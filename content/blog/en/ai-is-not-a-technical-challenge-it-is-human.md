@@ -44,8 +44,6 @@ In the era of Artificial Intelligence, the ultimate divergence will never be dec
 
 Technology may accelerate the world; but the compass of the future will always belong to our capacity to remain profoundly human.
 
-**That is all.**
-
 ---
 
 *September 2026*

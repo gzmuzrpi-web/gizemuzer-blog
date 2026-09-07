@@ -4,8 +4,8 @@ Bu kurallar, gizemuzer-blog projesindeki tüm içerik üretimi, editoryal süre�
 
 ## 1. Kalem DNA'sı ve Üslup
 - **Felsefi Nabız:** Kurban psikolojisine girmeden, gerçekle kavga etmeyen, olgun, dik ve cesur bir ses.
-- **Vuruş Cümleleri:** Paragrafların sonunda akılda kalan, kısa ve sarsıcı cümleler kullanın ("Ders almaktan yorulan öğrenci olmayı bıraktım. Hepsi bu.").
-- **Yasaklar:** Klişe kişisel gelişim tavsiyeleri, robotik yapay zeka jargonu, sitem dolu arabesk ifadeler ve içi boş süslemeler kesinlikle yasaktır.
+- **Vuruş Cümleleri:** Paragrafların sonunda akılda kalan, kısa ve sarsıcı cümleler kullanın. Kapanış cümleleri her metnin kendi özgün ritminden doğmalıdır; belirli bir yazıya ait vuruşlar (örneğin *"Hepsi bu."*) asla başka yazılarda şablon olarak yinelenmemelidir.
+- **Yasaklar:** Klişe kişisel gelişim tavsiyeleri, robotik yapay zeka jargonu, sitem dolu arabesk ifadeler, basmakalıp kapanış cümleleri ve içi boş süslemeler kesinlikle yasaktır.
 - **Kesişim:** Sezgileri ve insan doğasını mutlaka sinirbilim (nöroplastisite, vagus siniri, enterik sinir sistemi) ve kadim felsefeyle buluşturun.
 
 ## 2. Haftalık Yayın Dengesi
