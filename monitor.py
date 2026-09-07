@@ -34,6 +34,8 @@ PAGES = [
     ("/en/about/", "About"),
     ("/iletisim/", "İletişim"),
     ("/en/contact/", "Contact"),
+    ("/blog/bir-omuzda-butun-zirhlari-birakmak/", "Bir Omuzda Dinlenmek (TR)"),
+    ("/en/blog/dropping-all-armor-on-a-shoulder/", "Dropping All Armor (EN)"),
     ("/blog/noroplastisite-ve-zihnin-donusum-gucu/", "Nöroplastisite (TR)"),
     ("/en/blog/neuroplasticity-and-the-transformative-power-of-the-mind/", "Neuroplasticity (EN)"),
     ("/blog/sirlarin-sirri-insan-zihninin-gizemi/", "Sırların Sırrı (TR)"),
