@@ -136,13 +136,14 @@ if __name__ == "__main__":
         filename="instagram_quote_card_1.jpg"
     )
 
-    # Card 2: Kusurun ışığı alıntısı
+    # Card: Tanrı Hep Geometri Kullanır
     create_quote_card(
         quote_lines=[
-            "“Oysa kusurum bana ne güzel bir kapı aralamıştı...",
-            "Birine ayna olacaksanız, yalnızca onun ışığına değil; karanlığına da ayna olmalısınız.”"
+            "“Tanrı felsefe yapmaz; çünkü felsefe bir arayıştır, geometri ise hakikatin ta kendisi.",
+            "Bir teleskop ve bir mikroskop, arayana bu evreni ve Yaratıcısını anlatacak binlerce hikâyeyi çoktan fısıldamıştı.”"
         ],
         author="Gizem Uzer",
-        essay_title="Kusurun Işığı ve Aynanın İki Yüzü",
-        filename="instagram_quote_card_2.jpg"
+        essay_title="Tanrı Hep Geometri Kullanır: Teleskop, Mikroskop ve Yanılsamasız Hakikat",
+        filename="tanri_hep_geometri_kullanir_card.jpg"
     )
+
