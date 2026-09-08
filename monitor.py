@@ -33,6 +33,8 @@ PAGES = [
     ("/hakkimda/", "Hakkımda"),
     ("/en/about/", "About"),
     ("/iletisim/", "İletişim"),
+    ("/blog/guzelligin-otesinde-bir-deha-kleopatra-ve-tarihin-indirgemeci-hafizasi/", "Kleopatra & Deha (TR)"),
+    ("/en/blog/beyond-beauty-the-mind-of-cleopatra/", "Beyond Beauty - Cleopatra (EN)"),
     ("/blog/tanri-hep-geometri-kullanir/", "Tanrı Geometri Kullanır (TR)"),
     ("/en/blog/god-always-geometrizes/", "God Always Geometrizes (EN)"),
     ("/blog/koddan-iradeye-gelecegi-tahmin-etmek-degil-onu-yazmak/", "Koddan İradeye (TR)"),

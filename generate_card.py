@@ -147,3 +147,15 @@ if __name__ == "__main__":
         filename="tanri_hep_geometri_kullanir_card.jpg"
     )
 
+    # Card: Kleopatra
+    create_quote_card(
+        quote_lines=[
+            "“Sarayları ve imparatorlukları ayakta tutan şey boyalı dudaklar değil;",
+            "o dudaklardan dökülen diller, laboratuvarda damıtılan bilgi ve fırtınanın ortasında bile eğilmeyen tavizsiz bir zihindir.”"
+        ],
+        author="Gizem Uzer",
+        essay_title="Güzelliğin Ötesinde Bir Deha: Kleopatra ve Tarihin İndirgemeci Hafızası",
+        filename="kleopatra_deha_ve_hafiza_card.jpg"
+    )
+
+
