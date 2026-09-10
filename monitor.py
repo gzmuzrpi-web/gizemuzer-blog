@@ -35,6 +35,8 @@ PAGES = [
     ("/iletisim/", "İletişim"),
     ("/blog/guzelligin-otesinde-bir-deha-kleopatra-ve-tarihin-indirgemeci-hafizasi/", "Kleopatra & Deha (TR)"),
     ("/en/blog/beyond-beauty-the-mind-of-cleopatra/", "Beyond Beauty - Cleopatra (EN)"),
+    ("/blog/ikinci-beyin-ve-sezgilerin-norobiyolojisi/", "İkinci Beyin & Sezgiler (TR)"),
+    ("/en/blog/the-second-brain-and-the-neurobiology-of-intuition/", "The Second Brain (EN)"),
     ("/blog/tanri-hep-geometri-kullanir/", "Tanrı Geometri Kullanır (TR)"),
     ("/en/blog/god-always-geometrizes/", "God Always Geometrizes (EN)"),
     ("/blog/koddan-iradeye-gelecegi-tahmin-etmek-degil-onu-yazmak/", "Koddan İradeye (TR)"),
