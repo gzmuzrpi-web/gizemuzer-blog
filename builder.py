@@ -359,6 +359,9 @@ def render_base(title, description, content_html, lang="tr", active_nav="home", 
   <!-- Privacy-Friendly Invisible Analytics (Zero UI, Zero Cookies) -->
   <script defer src="/_vercel/insights/script.js"></script>
 
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3975292885122579" crossorigin="anonymous"></script>
+
   <!-- Styles -->
   <link rel="stylesheet" href="/css/style.css">
   {extra_head}
